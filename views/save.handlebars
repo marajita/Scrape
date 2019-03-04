@@ -1,0 +1,17 @@
+<body>
+    <div class="container">
+        <ul id="article-list" class="list-group">
+            {{#each articles}}
+            <li data-id="{{this.id}}" class="list-group-item">
+                <a href="{{this.link}}">{{this.title}}</a>
+                <p>{{this.description}}</p>
+                <p>{{this.datePublished}}</p>
+                <button class="btn btn-danger float-right delete">Delete From Saved</button>
+                <button class="btn btn-primary float-right delete">Article Notes</button>
+
+            </li>
+            {{/each}}
+        </ul>
+
+    </div>
+</body>
