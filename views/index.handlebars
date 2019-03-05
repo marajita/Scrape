@@ -1,12 +1,19 @@
 <body>
   <div class="container">
+    <h2>{{message}}</h2>
     <ul id="article-list" class="list-group">
       {{#each articles}}
       <li data-id="{{this.id}}" class="list-group-item">
         <a href="{{this.link}}">{{this.title}}</a>
         <p>{{this.description}}</p>
         <p>{{this.datePublished}}</p>
-        <button class="btn btn-default float-right delete">Save</button>
+        {{#if this.saved }}
+        <button data-id="{{this.id}}" class="btn btn-success float-right save-article">Saved!</button>
+
+        {{else}}
+        <button data-id="{{this.id}}" class="btn btn-default float-right save-article">Save</button>
+
+        {{/if}}
       </li>
       {{/each}}
     </ul>
