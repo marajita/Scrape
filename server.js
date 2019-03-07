@@ -56,9 +56,14 @@ app.set("view engine", "handlebars");
 require("./routes/htmlRoutes")(app);
 
 // Connect to the Mongo DB
-mongoose.connect("mongodb://localhost/scraper", {
+/* mongoose.connect("mongodb://localhost/scraper", {
   useNewUrlParser: true
-});
+}); */
+
+var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/scraper";
+
+mongoose.connect(MONGODB_URI);
+
 
 // Route for getting all Articles from the db
 app.get("/articles", function (req, res) {
