@@ -17,5 +17,6 @@ A note can be created in the saved article by clicking on Article Notes button. 
 # Framework used
 BootStrap
 
-#Demo
-![GitHub Logo](/public/images/mongo-scraper.gif)
+# Demo
+
+![GitHub Logo](public/images/mongo-scraper.gif)
