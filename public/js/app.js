@@ -16,9 +16,7 @@ $(document).ready(function () {
           }
         }
       });
-
   });
-
 });
 
 // When you click the savenote button
@@ -55,8 +53,6 @@ $(document).on("click", ".delete-article", function () {
       // Log the response
       console.log(data);
       location.reload();
-
-      // Empty the notes section
     });
 });
 
@@ -76,10 +72,6 @@ function refreshArticleNotes(id) {
     })
     // With that done
     .then(function (data) {
-      // Log the response
-      //console.log(data);
-      //location.reload();
-      //$("#myModal").modal('show');
 
       if (data) {
         article = data;
@@ -99,8 +91,7 @@ function refreshArticleNotes(id) {
           noteButton.attr("data-id", article.notes[i]._id);
           noteButton.attr("article-data-id", article._id);
           noteButton.attr("class", "float-right delete-note");
-          noteButton.text("Delete")
-
+          noteButton.text("Delete");
           noteLi.prepend(noteButton);
           noteLi.prepend(noteP);
 
@@ -113,17 +104,12 @@ function refreshArticleNotes(id) {
         $saveNoteBtn.attr("data-id", article._id);
 
         $("#myModal").modal("show");
+      } else {
+        alert("Something went wrong");
       }
-
-      // If a table is available... tell user they on the waiting list.
-      else {
-        alert("Something went wrong!! no friends for you");
-      }
-
-
-      // Empty the notes section
     });
 }
+
 
 // When you click the savenote button
 $(document).on("click", ".save-note", function () {
@@ -131,28 +117,30 @@ $(document).on("click", ".save-note", function () {
   var thisId = $(this).attr("data-id");
   //var thisId = "5c7c9dce23ab2eb2480bfb93";
 
-  // Run a POST request to change the note, using what's entered in the inputs
-  $.ajax({
-      method: "POST",
-      url: "/articles/" + thisId,
-      data: {
-        // Value taken from title input
-        //title: $("#titleinput").val(),
-        // Value taken from note textarea
-        body: $("#bodyinput").val()
-      }
-    })
-    // With that done
-    .then(function (data) {
-      // Log the response
-      console.log(data);
-      // Empty the notes section
-      // $("#notes").empty();
-      refreshArticleNotes(thisId);
-    });
+  var textareaVal = $("#bodyinput").val(); //get the value/text of the text are when button click
+
+  //check the value
+  if (textareaVal === "") {
+    $("#warning").show(); // if textarea value is empty then show the warning text
+  } else {
+    // Run a POST request to change the note, using what's entered in the inputs
+    $.ajax({
+        method: "POST",
+        url: "/articles/" + thisId,
+        data: {
+
+          body: $("#bodyinput").val()
+
+        }
+      })
+      // With that done
+      .then(function (data) {
+        console.log(data);
+        refreshArticleNotes(thisId);
+      });
+  }
 
   // Also, remove the values entered in the input and textarea for note entry
-  //$("#titleinput").val("");
   $("#bodyinput").val("");
 });
 
