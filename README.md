@@ -19,4 +19,4 @@ A note can be created in the saved article by clicking on Article Notes button. 
 
 # Demo
 
-![GitHub Logo](../images/mongo-scraper.gif)
+![GitHub Logo](.public/images/mongo-scraper.gif)
