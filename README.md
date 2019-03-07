@@ -15,8 +15,8 @@ A note can be created in the saved article by clicking on Article Notes button. 
 - Morgan 
 
 # Framework used
-BootStrap
+- BootStrap
 
 # Demo
 
-![GitHub Logo](public/images/mongo-scraper.gif)
+![GitHub Logo](../images/mongo-scraper.gif)
